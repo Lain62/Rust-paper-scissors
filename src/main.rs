@@ -15,5 +15,6 @@ fn get_player_input() -> String{
 }
 
 fn main() {
-    println!("you choose {}", get_player_input());
+    let user_fighter = get_player_input();
+    println!("you choose {user_fighter}");
 }
