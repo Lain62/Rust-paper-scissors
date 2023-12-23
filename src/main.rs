@@ -1,28 +1,19 @@
 use std::io;
 
-fn main() {
-
-    // function to get the player input and checks if it is correct
-    fn get_player_input() -> String{
+// function to get the player input and checks if it is correct
+fn get_player_input() -> String{
+    loop{
         let mut user_fighter = String::new();
-        loop{
-            println!("Please input a fighter: rock, paper, or scissors");
-            io::stdin().read_line(&mut user_fighter).expect("User fighter input error");
-            let user_fighter= user_fighter.trim();
-            let user_fighter= user_fighter.to_lowercase();
-            if user_fighter == "rock" {
-                break;
-            }else if user_fighter == "paper" {
-                break;
-            }else if user_fighter == "scissors" {
-                break;
-            } else {
-                println!("Please put a valid fighter");
-                continue;
-            }
+        println!("Please input a fighter: rock, paper, or scissors");
+        io::stdin().read_line(&mut user_fighter).expect("User fighter input error");
+        let user_fighter= user_fighter.trim().to_lowercase();
+        match user_fighter.as_str() {
+            "rock" | "paper" | "scissors" => break user_fighter.to_uppercase(),
+            _ => println!("Please enter a valid fighter.")
         }
-        return user_fighter.to_uppercase()
     }
+}
 
+fn main() {
     println!("you choose {}", get_player_input());
 }
